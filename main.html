@@ -27,7 +27,7 @@
         <canvas id="captcha" width="70"  >captcha text</canvas>
         <button id="refreshButton" type="submit">   ↻</button>
         
-        <a href="Eid-photo.html" download>
+      <!--  <a href="Eid-photo.html" download>-->
     </div>
 
         <input id="textBox" type="text" name="text" size="25px" >
@@ -194,7 +194,7 @@ refreshButton.addEventListener('click', function() {
 function setUpDownloadPageAsImage() {
     html2canvas(document.body).then(function(canvas) {
       console.log(canvas);
-      simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
+      simulateDownloadImageClick(canvas.toDataURL(), 'e-card.png');
     });
   
 }
