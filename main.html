@@ -153,8 +153,9 @@ ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
 userText.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         if (userText.value === c) {
-            output.classList.add("correctCaptcha");
-            output.innerHTML = "Correct!";
+            
+            setUpDownloadPageAsImage();
+
         } else {
             output.classList.add("incorrectCaptcha");
             output.innerHTML = "Incorrect, please try again";
@@ -165,9 +166,9 @@ userText.addEventListener('keyup', function(e) {
 
 submitButton.addEventListener('click', function() {
     if (userText.value === c) {
-        output.classList.add("correctCaptcha");
-        output.innerHTML = "Correct!";
-
+     
+        
+        setUpDownloadPageAsImage();
 
     } else {
         output.classList.add("incorrectCaptcha");
@@ -187,5 +188,37 @@ refreshButton.addEventListener('click', function() {
     ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
     output.innerHTML = "";
 });
+
+
+
+function setUpDownloadPageAsImage() {
+    html2canvas(document.body).then(function(canvas) {
+      console.log(canvas);
+      simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
+    });
+  
+}
+
+function simulateDownloadImageClick(uri, filename) {
+  var link = document.createElement('a');
+  if (typeof link.download !== 'string') {
+    window.open(uri);
+  } else {
+    link.href = uri;
+    link.download = filename;
+    accountForFirefox(clickLink, link);
+  }
+}
+
+function clickLink(link) {
+  link.click();
+}
+
+function accountForFirefox(click) { // wrapper function
+  let link = arguments[1];
+  document.body.appendChild(link);
+  click(link);
+  document.body.removeChild(link);
+}
 
 </script>
