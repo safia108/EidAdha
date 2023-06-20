@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    
+<body>
+
+    <head>
+        <title>holiday card</title>
+        <img src="virgin_logo.png" alt="banner" width="80" height="90" >
+
+        </head>
+
+<h2  style="text-align: center;">Virgin Mobile wishes you a joyful and warm holiday </h2>
+<h3 style="text-align: center;">Happy Eid You Guys !!!</h3>
+<br>
+
+<h1 style="text-align: center;">Get your e-card</h1>
+
+<div class = "Inputs">
+ <form>
+    <input type="text" id="fnameAR" name="fnameAR" placeholder="Enter Your Full Name" size="40"><br><br>
+    <input type="text" id="lnameAR" name="positionAR" placeholder="Enter Your Position" size="40"><br><br>
+    </form>
+</div>
+  <div class="center">
+    <div id="parent">
+
+        <canvas id="captcha" width="70"  >captcha text</canvas>
+        <button id="refreshButton" type="submit">   ↻</button>
+        
+
+    </div>
+
+        <input id="textBox" type="text" name="text" size="25px" >
+        <div id="buttons">
+        <input id="submitButton" type="submit" value = "Download" >
+        </div>
+        <span id="output"></span>
+</div>
+<!--<footer>&copy;2023 <a href="https://www.z1f1.com/">Z1f1.com</a>- All rights reserved.</footer>-->
+</body>
+
+</html>
+<style>
+body {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+
+}
+
+input {
+    border-radius: 5px;
+}
+
+
+
+
+form {
+  text-align: center;
+}
+
+
+
+#parent {
+
+    display:inline-flex;
+
+}
+
+#captcha {
+    font-size: 2px;
+    letter-spacing: 2px;
+
+}
+
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submitButton {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: red;
+    border: 0px;
+    font-weight: bold;
+    padding: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+#refreshButton {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: white;
+    border: 0px;
+    font-weight: bold;
+   
+}
+
+
+#textBox {
+    height: 20px;
+}
+
+.incorrectCaptcha {
+    color: #FF0000;
+}
+
+.correctCaptcha {
+    color: #376703;
+}
+
+footer {
+position: absolute;
+bottom: 0;
+width: 100%;
+height: 30px;
+align-self: center;
+}
+</style>
+
+<script>
+
+let captchaText = document.querySelector('#captcha');
+var ctx = captchaText.getContext("2d");
+ctx.font = "20px Roboto";
+ctx.fillStyle = "#FF0000";
+
+
+let userText = document.querySelector('#textBox');
+let submitButton = document.querySelector('#submitButton');
+let output = document.querySelector('#output');
+let refreshButton = document.querySelector('#refreshButton');
+
+
+let alphaNums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let emptyArr = [];
+
+
+for (let i = 1; i <= 4; i++) {
+    emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+}
+var c = emptyArr.join('');
+ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
+
+
+
+userText.addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) {
+        if (userText.value === c) {
+            output.classList.add("correctCaptcha");
+            output.innerHTML = "Correct!";
+        } else {
+            output.classList.add("incorrectCaptcha");
+            output.innerHTML = "Incorrect, please try again";
+        }
+    }
+});
+
+
+submitButton.addEventListener('click', function() {
+    if (userText.value === c) {
+        output.classList.add("correctCaptcha");
+        output.innerHTML = "Correct!";
+
+
+    } else {
+        output.classList.add("incorrectCaptcha");
+        output.innerHTML = "Incorrect, please try again";
+    }
+});
+
+
+refreshButton.addEventListener('click', function() {
+    userText.value = "";
+    let refreshArr = [];
+    for (let j = 1; j <= 4; j++) {
+        refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+    }
+    ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+    c = refreshArr.join('');
+    ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
+    output.innerHTML = "";
+});
+
+</script>
