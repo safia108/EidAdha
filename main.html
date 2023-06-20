@@ -24,8 +24,9 @@
   <div class="center">
     <div id="parent">
 
-        <canvas id="captcha" width="70"  >captcha text</canvas>
-        <button id="refreshButton" type="submit">   ↻</button>
+        <canvas id="captcha" width="70" height="50"  >captcha text</canvas>
+        <button id="refreshButton" type="submit">&#x21bb;</button>
+
         
     </div>
 
@@ -44,6 +45,8 @@ body {
     background-color: white;
     font-family: 'Roboto', sans-serif;
     align-items: center;
+    width: 50%;
+    align-self: center;
 
 }
 
@@ -63,13 +66,14 @@ form {
 #parent {
 
     display:inline-flex;
+    height: 50px;
 
 }
 
 #captcha {
-    font-size: 2px;
+    font-size: 30px;
     letter-spacing: 2px;
-
+    
 }
 
 
@@ -92,12 +96,11 @@ form {
 }
 
 #refreshButton {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    background-color: white;
+    font-size: 20px;
+    height: 40px;
     border: 0px;
     font-weight: bold;
-   
+    background-color: white;
 }
 
 
