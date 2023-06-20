@@ -5,15 +5,15 @@
 
     <head>
         <title>holiday card</title>
-        <img src="virgin_logo.png" alt="banner" width="80" height="90" >
+        <img src="virgin_logo.png" alt="banner" width="20%" height="20%" >
 
         </head>
 
-<h2  style="text-align: center;">Virgin Mobile wishes you a joyful and warm holiday </h2>
-<h3 style="text-align: center;">Happy Eid You Guys !!!</h3>
+<h2  style="text-align: center; font-size: 70px;">Virgin Mobile wishes you a joyful and warm holiday </h2>
+<h3 style="text-align: center; font-size: 50px;" >Happy Eid You Guys !!!</h3>
 <br>
 
-<h1 style="text-align: center;">Get your e-card</h1>
+<h1 style="text-align: center;  font-size: 70px; ">Get your e-card</h1>
 
 <div class = "Inputs">
  <form action="Eid-photo.html" method="GET">
@@ -25,14 +25,14 @@
     <div id="parent">
 
         <canvas id="captcha" width="70" height="50"  >captcha text</canvas>
-        <button id="refreshButton" type="submit">&#x21bb;</button>
+        <button id="refreshButton" type="submit" style="font-size: 45px;">&nbsp;&#x21bb;</button>
 
         
     </div>
 
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
-        <input id="submitButton" type="submit" value = "Download" >
+        <input id="submitButton" type="submit" value = "Download" style="font-size: 30px;" >
         </div>
         <span id="output"></span>
 </div>
@@ -41,14 +41,16 @@
 
 </html>
 <style>
-html, body {
+body {
     background-color: white;
     font-family: 'Roboto', sans-serif;
     align-items: center;
-    height: 100%;}
+    }
 
 input {
     border-radius: 5px;
+    height: 25px;
+    width: 500px;
 }
 
 
@@ -59,16 +61,17 @@ form {
 }
 
 
+ 
 
 #parent {
 
     display:inline-flex;
-    height: 50px;
+    height: 150px;
 
 }
 
 #captcha {
-    font-size: 30px;
+    font-size: 90px;
     letter-spacing: 2px;
     
 }
@@ -90,11 +93,13 @@ form {
     padding-left: 20px;
     padding-right: 20px;
     color: white;
+    width: 250px;
+    height: 70px;
 }
 
 #refreshButton {
     font-size: 20px;
-    height: 40px;
+    height: 100px;
     border: 0px;
     font-weight: bold;
     background-color: white;
