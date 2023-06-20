@@ -4,10 +4,10 @@
 <body>
 
     <head>
-        <title>holiday card</title>
         <img src="virgin_logo.png" alt="banner" width="20%" height="20%" >
 
         </head>
+        <title>holiday card</title>
 
 <h2  style="text-align: center; font-size: 70px;">Virgin Mobile wishes you a joyful and warm holiday </h2>
 <h3 style="text-align: center; font-size: 50px;" >Happy Eid You Guys !!!</h3>
@@ -21,6 +21,9 @@
     <input type="text" id="positionAR" name="positionAR" placeholder="Enter Your Position" size="40"><br><br>
     </form>
 </div>
+<br>
+<br>
+<br>
   <div class="center">
     <div id="parent">
 
@@ -49,7 +52,7 @@ body {
 
 input {
     border-radius: 5px;
-    height: 25px;
+    height: 35px;
     width: 500px;
 }
 
@@ -67,12 +70,14 @@ form {
 
     display:inline-flex;
     height: 150px;
+    width: 250px;
 
 }
 
 #captcha {
     font-size: 90px;
     letter-spacing: 2px;
+    width: 150px;
     
 }
 
@@ -108,7 +113,7 @@ form {
 
 
 #textBox {
-    height: 20px;
+    height: 35px;
 }
 
 .incorrectCaptcha {
@@ -118,7 +123,9 @@ form {
 .correctCaptcha {
     color: #376703;
 }
-
+input::placeholder {
+    font: 1.5rem/3 sans-serif;
+}
 footer {
 position: absolute;
 bottom: 0;
