@@ -1,2 +1,0 @@
-# EidAdha
- e-card
