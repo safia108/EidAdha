@@ -18,7 +18,7 @@
 <div class = "Inputs">
  <form action="Eid-photo.html" method="GET">
     <input type="text" id="fnameAR" name="fnameAR" placeholder="Enter Your Full Name" size="40"><br><br>
-    <input type="text" id="lnameAR" name="positionAR" placeholder="Enter Your Position" size="40"><br><br>
+    <input type="text" id="positionAR" name="positionAR" placeholder="Enter Your Position" size="40"><br><br>
     </form>
 </div>
   <div class="center">
@@ -149,24 +149,30 @@ ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
 
 
 
-userText.addEventListener('keyup', function(e) {
-    if (e.keyCode === 13) {
-        if (userText.value === c) {
-            output.classList.add("correctCaptcha");
-            output.innerHTML = "Correct!";
-        } else {
-            output.classList.add("incorrectCaptcha");
-            output.innerHTML = "Incorrect, please try again";
-        }
-    }
-});
+// userText.addEventListener('keyup', function(e) {
+//     if (e.keyCode === 13) {
+//         if (userText.value === c) {
+//            var uname = document.getElementById("fnameAR").value;
+//            var pname = document.getElementById("positionAR").value;
+
+//            localStorage.setItem("Username",uname);
+//            localStorage.setItem("postion" , pname);
+           
+//         } else {
+//             output.classList.add("incorrectCaptcha");
+//             output.innerHTML = "Incorrect, please try again";
+//         }
+//     }
+// });
 
 
 submitButton.addEventListener('click', function() {
     if (userText.value === c) {
-        output.classList.add("correctCaptcha");
-        output.innerHTML = "Correct!";
+        var uname = document.getElementById("fnameAR").value;
+           var pname = document.getElementById("positionAR").value;
 
+           localStorage.setItem("Username",uname);
+           localStorage.setItem("postion" , pname);
 
     } else {
         output.classList.add("incorrectCaptcha");
