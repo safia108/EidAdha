@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div id="write">
-    </div>
+    <div id="fullname"></div>
+    <div id="pos"></div>
 </body>
 </html>
 <style>
     body {
        background-image: url(VMKSA-Eid-AlAdha.png);
+       background-repeat:no-repeat;
+       size: 100%;
     
     }
 </style>
 <script>
     function show() {
-        document.getElementById("write").innerHTML = fnameAR + positionAR;
+        document.getElementById("fullname").innerHTML = fnameAR ;
+        document.getElementById("pos").innerHTML =  positionAR;
+
     }
     </script>
