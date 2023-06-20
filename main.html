@@ -16,7 +16,7 @@
 <h1 style="text-align: center;">Get your e-card</h1>
 
 <div class = "Inputs">
- <form >
+ <form action="Eid-photo.html" method="GET">
     <input type="text" id="fnameAR" name="fnameAR" placeholder="Enter Your Full Name" size="40"><br><br>
     <input type="text" id="lnameAR" name="positionAR" placeholder="Enter Your Position" size="40"><br><br>
     </form>
@@ -27,7 +27,7 @@
         <canvas id="captcha" width="70"  >captcha text</canvas>
         <button id="refreshButton" type="submit">   ↻</button>
         
-      <!--  <a href="Eid-photo.html" download>-->
+        <a href="Eid-photo.html" download>
     </div>
 
         <input id="textBox" type="text" name="text" size="25px" >
@@ -153,9 +153,8 @@ ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
 userText.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         if (userText.value === c) {
-            
-            setUpDownloadPageAsImage();
-
+            output.classList.add("correctCaptcha");
+            output.innerHTML = "Correct!";
         } else {
             output.classList.add("incorrectCaptcha");
             output.innerHTML = "Incorrect, please try again";
@@ -166,9 +165,9 @@ userText.addEventListener('keyup', function(e) {
 
 submitButton.addEventListener('click', function() {
     if (userText.value === c) {
-     
-        
-        setUpDownloadPageAsImage();
+        output.classList.add("correctCaptcha");
+        output.innerHTML = "Correct!";
+
 
     } else {
         output.classList.add("incorrectCaptcha");
@@ -188,37 +187,5 @@ refreshButton.addEventListener('click', function() {
     ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
     output.innerHTML = "";
 });
-
-
-
-function setUpDownloadPageAsImage() {
-    html2canvas(document.body).then(function(canvas) {
-      console.log(canvas);
-      simulateDownloadImageClick(canvas.toDataURL(), 'e-card.png');
-    });
-  
-}
-
-function simulateDownloadImageClick(uri, filename) {
-  var link = document.createElement('a');
-  if (typeof link.download !== 'string') {
-    window.open(uri);
-  } else {
-    link.href = uri;
-    link.download = filename;
-    accountForFirefox(clickLink, link);
-  }
-}
-
-function clickLink(link) {
-  link.click();
-}
-
-function accountForFirefox(click) { // wrapper function
-  let link = arguments[1];
-  document.body.appendChild(link);
-  click(link);
-  document.body.removeChild(link);
-}
 
 </script>
