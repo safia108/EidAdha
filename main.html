@@ -37,7 +37,7 @@
 
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
-        <a id="submitButton" href="#" download="e-card.png" style="font-size: 30px;" >Download</a>
+        <a id="submitButton" href="Eid-photo.html" download="e-card.png" style="font-size: 30px;" >Download</a>
         </div>
         <span id="output"></span>
 </div>
@@ -189,14 +189,19 @@ submitButton.addEventListener('click', function() {
         var uname = document.getElementById("fnameAR").value;
         var pname = document.getElementById("positionAR").value;
 
+        localStorage.setItem("Username", uname);
+        localStorage.setItem("postion", pname);
+
+
+
         
-              ctxx.drawImage(img,0,0);
-              ctxx.font = '50px serif';
-              ctxx.fillText(uname +" \n"+ pname, 50, 90);
-              const pngURl = canvas.toDataURL("image/png");
-              console.log(pngURl);
-              canvasDownlaod.href=pngURl;
-              download();
+            //   ctxx.drawImage(img,0,0);
+            //   ctxx.font = '50px serif';
+            //   ctxx.fillText(uname +" \n"+ pname, 50, 90);
+            //   const pngURl = canvas.toDataURL("image/png");
+            //   console.log(pngURl);
+            //   canvasDownlaod.href=pngURl;
+            //   download();
 
             
 
@@ -221,12 +226,12 @@ refreshButton.addEventListener('click', function() {
     output.innerHTML = "";
 });
 
-function download() {
-    var link = document.createElement('a');
-    link.download = 'filename.png';
-    link.href = document.getElementById('canvas').toDataURL('image/png')
-    link.click();
-  }
+// function download() {
+//     var link = document.createElement('a');
+//     link.download = 'filename.png';
+//     link.href = document.getElementById('canvas').toDataURL('image/png')
+//     link.click();
+//   }
 
 
 
