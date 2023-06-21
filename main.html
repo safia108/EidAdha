@@ -38,7 +38,7 @@
 
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
-            <button id="submitButton" onClick="handleClick()">Download</button>
+            <button id="submitButton">Download</button>
 
         </div>
         <span id="output"></span>
@@ -186,8 +186,8 @@ var uname = document.getElementById("fnameAR").value;
 var pname = document.getElementById("positionAR").value;
 
 window.onload = function(){
-     var canvas = document.getElementById("myCanvas");
-     var context = canvas.getContext("2d");
+     var canvass = document.getElementById("myCanvas");
+     var context = canvass.getContext("2d");
      var imageObj = new Image();
      imageObj.onload = function(){
          context.drawImage(imageObj, 10, 10);
@@ -196,6 +196,9 @@ window.onload = function(){
      };
      imageObj.src = "VMKSA-Eid-AlAdha.png"; 
 };
+
+
+
 
 submitButton.addEventListener('click', function() {
     if (userText.value === c) {
@@ -206,7 +209,11 @@ submitButton.addEventListener('click', function() {
 
 
 
-        
+        var image = canvass.toDataURL();
+        var aDownloadLink = document.createElement('a');
+        aDownloadLink.download = 'canvas_image.png';
+        aDownloadLink.href = image;
+        aDownloadLink.click();
             //   ctxx.drawImage(img,0,0);
             //   ctxx.font = '50px serif';
             //   ctxx.fillText(uname +" \n"+ pname, 50, 90);
@@ -223,9 +230,9 @@ submitButton.addEventListener('click', function() {
     }
 });
 
-function pageRedirect() {
-            window.location.href = "Eid-photo.html";
-        } 
+// function pageRedirect() {
+//             window.location.href = "Eid-photo.html";
+//         } 
 refreshButton.addEventListener('click', function() {
     userText.value = "";
     let refreshArr = [];
@@ -246,12 +253,12 @@ refreshButton.addEventListener('click', function() {
 //   }
 
 
-function handleClick() {
-        var anchor = document.createElement('a');
-        anchor.href = canvas.toDataURL('image/png'); // 'image/jpg'
-        anchor.download = 'image.png';               // 'image.jpg'
-        anchor.click();
-    }
+// function handleClick() {
+//         var anchor = document.createElement('a');
+//         anchor.href = canvass.toDataURL('image/png'); // 'image/jpg'
+//         anchor.download = 'image.png';               // 'image.jpg'
+//         anchor.click();
+//     }
             
         
 </script>
