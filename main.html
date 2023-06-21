@@ -36,6 +36,7 @@
 
 </div>
 
+
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
         <input id="submitButton" type="submit" value = "Download" style="font-size: 30px;" >
@@ -196,8 +197,8 @@ submitButton.addEventListener('click', function() {
         let img = new Image("VMKSA-Eid-AlAdha.png");
              ctx.drawImage(img,0,0);
               ctx.font = '50px serif';
-              ctx.fillText('Hello world', 50, 90);
-
+              ctx.fillText(uname +" \n"+ pname, 50, 90);
+              downloadImage(ctx);
 
     } else {
         output.classList.add("incorrectCaptcha");
