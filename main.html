@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
      <head>
-        <img src="virgin_logo.png" alt="banner" width="20%" height="20%" >
+        <img src="virgin_logo.png" alt="banner" width="10%" height="10%" >
 
         </head>
 <body>
@@ -31,8 +31,10 @@
         <button id="refreshButton" type="submit" style="font-size: 45px;">&nbsp;&#x21bb;</button>
 
 <!-- (A) EMPTY CANVAS -->
-<canvas id="demo"></canvas>
-    </div>
+
+<canvas id="canvas" width="400" height="150"></canvas>
+
+</div>
 
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
@@ -188,36 +190,14 @@ submitButton.addEventListener('click', function() {
         //    localStorage.setItem("postion" , pname);
         //    pageRedirect();
         // (A) IMAGE + TEXT + CANVAS
-var img = new Image(),
-    txt = uname+ "\n" + pname,
-    canvasss = document.createElement("canvasss"),
-    ctx = canvasss.getContext("2d");
- 
-// (B) WRITE TEXT ON IMAGE
-img.onload = () => {
-  // (B1) SOURCE IMAGE
-  canvasss.width = img.naturalWidth;
-  canvasss.height = img.naturalHeight;
-  ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
- 
-  // (B2) ADD TEXT
-  ctx.font = "bold 50px Arial";
-  ctx.strokeStyle = "black";
-  ctx.lineWidth = 2;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-  ctx.strokeText(txt, 0, 50);
-  ctx.fillText(txt, 0, 50);
- 
-  // (B3) "FORCE DOWNLOAD"
-  let anchor = document.createElement("a");
-  anchor.href = canvasss.toDataURL("EidAdha/VMKSA-Eid-AlAdha.png");
-  anchor.download = "VMKSA-Eid-AlAdha.png";
-  anchor.click();
-  anchor.remove();
-};
- 
-// (C) GO!
-img.src = "EidAdha/VMKSA-Eid-AlAdha.png";
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let img = new Image("VMKSA-Eid-AlAdha.png");
+             ctx.drawImage(img,0,0);
+              ctx.font = '50px serif';
+              ctx.fillText('Hello world', 50, 90);
+
 
     } else {
         output.classList.add("incorrectCaptcha");
