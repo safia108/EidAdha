@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div id="fullname"></div>
     <div id="pos"></div>
+  
 </body>
 </html>
-<style>
+<!-- <style>
     body {
        background-image: url(VMKSA-Eid-AlAdha.png);
        background-repeat:no-repeat;
        size: 100%;
     
     }
-</style>
+</style> -->
 <script>
     
-        document.getElementById("fullname").innerlHTML = localStorage.getItem("fnameAR") ;
-        document.getElementById("pos").innerHTML =  localStorage.getItem("positionAR");
+        document.getElementById("pos").innerHTML =  localStorage.getItem("postion") + localStorage.getItem("Username");
 
     
     </script>
