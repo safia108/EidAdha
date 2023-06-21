@@ -154,7 +154,7 @@ let refreshButton = document.querySelector('#refreshButton');
 
 const canvas = document.getElementById('canvas');
 const ctxx = canvas.getContext('2d');
- let img = new Image("EidAdha/VMKSA-Eid-AlAdha.png");
+ let img = new Image("VMKSA-Eid-AlAdha.png");
 
 let alphaNums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 let emptyArr = [];
@@ -198,6 +198,7 @@ submitButton.addEventListener('click', function() {
               const pngURl = canvas.toDataURL("image/png");
               console.log(pngURl);
               canvasDownlaod.href=pngURl;
+              download();
 
             
 
@@ -222,23 +223,14 @@ refreshButton.addEventListener('click', function() {
     output.innerHTML = "";
 });
 
-function download(filename, url) {
-            var element = document.createElement('a');
-            element.setAttribute('href', url);
-            element.setAttribute('download', filename);
-            document.body.appendChild(element);
-            element.click();
-             //remove the hidden link 
-            //document.body.removeChild(element);
-            }
+function download() {
+    var link = document.createElement('a');
+    link.download = 'filename.png';
+    link.href = document.getElementById('canvas').toDataURL('image/png')
+    link.click();
+  }
 
-           function onclickhandler(e) {
-                var name =  e.files[0].name;
-                var file =  e.files[0];
-                var blob = new Blob([file]);
-                var url  = URL.createObjectURL(blob);
-                download(name,url);
-            }
+
 
             
         
