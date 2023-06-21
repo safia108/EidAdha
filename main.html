@@ -198,7 +198,7 @@ submitButton.addEventListener('click', function() {
              ctx.drawImage(img,0,0);
               ctx.font = '50px serif';
               ctx.fillText(uname +" \n"+ pname, 50, 90);
-              downloadImage(img);
+              downloadImage(canvas.toDataURL('image/png'));
 
     } else {
         output.classList.add("incorrectCaptcha");
