@@ -38,12 +38,135 @@
 
         <input id="textBox" type="text" name="text" size="25px" >
         <div id="buttons">
-            <button id="submitButton">Download</button>
+            <a id="submitButton" href="handleClick()">Download</a>
 
         </div>
         <span id="output"></span>
 </div>
 <!--<footer>&copy;2023 <a href="https://www.z1f1.com/">Z1f1.com</a>- All rights reserved.</footer>-->
+
+<script>
+
+    let captchaText = document.querySelector('#captcha');
+    var ctx = captchaText.getContext("2d");
+    ctx.font = "20px Roboto";
+    ctx.fillStyle = "#FF0000";
+    
+    
+    let userText = document.querySelector('#textBox');
+    let submitButton = document.querySelector('#submitButton');
+    let output = document.querySelector('#output');
+    let refreshButton = document.querySelector('#refreshButton');
+    
+    
+    
+    let alphaNums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    let emptyArr = [];
+    
+    
+    for (let i = 1; i <= 4; i++) {
+        emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+    }
+    var c = emptyArr.join('');
+    ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
+    
+    
+    
+    // userText.addEventListener('keyup', function(e) {
+    //     if (e.keyCode === 13) {
+    //         if (userText.value === c) {
+    //            var uname = document.getElementById("fnameAR").value;
+    //            var pname = document.getElementById("positionAR").value;
+    
+    //            localStorage.setItem("Username",uname);
+    //            localStorage.setItem("postion" , pname);
+               
+    //         } else {
+    //             output.classList.add("incorrectCaptcha");
+    //             output.innerHTML = "Incorrect, please try again";
+    //         }
+    //     }
+    // });
+    
+    var uname = document.getElementById("fnameAR").value;
+    var pname = document.getElementById("positionAR").value;
+    
+    window.onload = function(){
+         var canvass = document.getElementById("myCanvas");
+         var context = canvass.getContext("2d");
+         var imageObj = new Image();
+         imageObj.onload = function(){
+             context.drawImage(imageObj, 10, 10);
+             context.font = "40pt Calibri";
+             context.fillText(uname +" "+pname, 20, 20);
+         };
+         imageObj.src = "VMKSA-Eid-AlAdha.png"; 
+    };
+    
+    
+    
+    
+    submitButton.addEventListener('click', function() {
+        if (userText.value === c) {
+    
+    
+            localStorage.setItem("Username", uname);
+            localStorage.setItem("postion", pname);
+    
+    
+    
+           
+                //   ctxx.drawImage(img,0,0);
+                //   ctxx.font = '50px serif';
+                //   ctxx.fillText(uname +" \n"+ pname, 50, 90);
+                //   const pngURl = canvas.toDataURL("image/png");
+                //   console.log(pngURl);
+                //   canvasDownlaod.href=pngURl;
+                //   download();
+    
+                
+    
+        } else {
+            output.classList.add("incorrectCaptcha");
+            output.innerHTML = "Incorrect, please try again";
+        }
+    });
+    
+    // function pageRedirect() {
+    //             window.location.href = "Eid-photo.html";
+    //         } 
+    refreshButton.addEventListener('click', function() {
+        userText.value = "";
+        let refreshArr = [];
+        for (let j = 1; j <= 4; j++) {
+            refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+        }
+        ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+        c = refreshArr.join('');
+        ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
+        output.innerHTML = "";
+    });
+    
+    // function download() {
+    //     var link = document.createElement('a');
+    //     link.download = 'filename.png';
+    //     link.href = document.getElementById('canvas').toDataURL('image/png')
+    //     link.click();
+    //   }
+    
+    
+    function handleClick() {
+        
+
+            var image = canvass.toDataURL();
+            var aDownloadLink = document.createElement('a');
+            aDownloadLink.download = 'canvas_image.png';
+            aDownloadLink.href = image;
+            return image;
+        }
+                
+            
+    </script>
 </body>
 
 </html>
@@ -139,126 +262,4 @@ align-self: center;
 }
 </style>
 
-<script>
 
-let captchaText = document.querySelector('#captcha');
-var ctx = captchaText.getContext("2d");
-ctx.font = "20px Roboto";
-ctx.fillStyle = "#FF0000";
-
-
-let userText = document.querySelector('#textBox');
-let submitButton = document.querySelector('#submitButton');
-let output = document.querySelector('#output');
-let refreshButton = document.querySelector('#refreshButton');
-
-
-
-let alphaNums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-let emptyArr = [];
-
-
-for (let i = 1; i <= 4; i++) {
-    emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
-}
-var c = emptyArr.join('');
-ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
-
-
-
-// userText.addEventListener('keyup', function(e) {
-//     if (e.keyCode === 13) {
-//         if (userText.value === c) {
-//            var uname = document.getElementById("fnameAR").value;
-//            var pname = document.getElementById("positionAR").value;
-
-//            localStorage.setItem("Username",uname);
-//            localStorage.setItem("postion" , pname);
-           
-//         } else {
-//             output.classList.add("incorrectCaptcha");
-//             output.innerHTML = "Incorrect, please try again";
-//         }
-//     }
-// });
-
-var uname = document.getElementById("fnameAR").value;
-var pname = document.getElementById("positionAR").value;
-
-window.onload = function(){
-     var canvass = document.getElementById("myCanvas");
-     var context = canvass.getContext("2d");
-     var imageObj = new Image();
-     imageObj.onload = function(){
-         context.drawImage(imageObj, 10, 10);
-         context.font = "40pt Calibri";
-         context.fillText(uname +" "+pname, 20, 20);
-     };
-     imageObj.src = "VMKSA-Eid-AlAdha.png"; 
-};
-
-
-
-
-submitButton.addEventListener('click', function() {
-    if (userText.value === c) {
-
-
-        localStorage.setItem("Username", uname);
-        localStorage.setItem("postion", pname);
-
-
-
-        var image = canvass.toDataURL();
-        var aDownloadLink = document.createElement('a');
-        aDownloadLink.download = 'canvas_image.png';
-        aDownloadLink.href = image;
-        aDownloadLink.click();
-            //   ctxx.drawImage(img,0,0);
-            //   ctxx.font = '50px serif';
-            //   ctxx.fillText(uname +" \n"+ pname, 50, 90);
-            //   const pngURl = canvas.toDataURL("image/png");
-            //   console.log(pngURl);
-            //   canvasDownlaod.href=pngURl;
-            //   download();
-
-            
-
-    } else {
-        output.classList.add("incorrectCaptcha");
-        output.innerHTML = "Incorrect, please try again";
-    }
-});
-
-// function pageRedirect() {
-//             window.location.href = "Eid-photo.html";
-//         } 
-refreshButton.addEventListener('click', function() {
-    userText.value = "";
-    let refreshArr = [];
-    for (let j = 1; j <= 4; j++) {
-        refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
-    }
-    ctx.clearRect(0, 0, captchaText.width, captchaText.height);
-    c = refreshArr.join('');
-    ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
-    output.innerHTML = "";
-});
-
-// function download() {
-//     var link = document.createElement('a');
-//     link.download = 'filename.png';
-//     link.href = document.getElementById('canvas').toDataURL('image/png')
-//     link.click();
-//   }
-
-
-// function handleClick() {
-//         var anchor = document.createElement('a');
-//         anchor.href = canvass.toDataURL('image/png'); // 'image/jpg'
-//         anchor.download = 'image.png';               // 'image.jpg'
-//         anchor.click();
-//     }
-            
-        
-</script>
