@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 	if(isset($_POST['sub']))
 	{
 		$font="Anklepants/anklepan.ttf";
@@ -68,7 +68,7 @@ if(isset($_POST['view']))
 	  
 	}
 
-?>
+?> -->
 
 
 
@@ -119,11 +119,11 @@ if(isset($_POST['view']))
 					<form id="form" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Enter your first Name:</label>
-							<input type="text" name="name" autocomplete="off" class="form-control" required >
+							<input id="name" type="text" name="name" autocomplete="off" class="form-control" required >
 						</div>
 						<div class="form-group">
-							<input type="submit" value="View My Thank You Card" name="view" class="btn btn-primary"><br><br>
-							<input type="submit" value="Download My Thank You Card" name="sub" class="btn btn-primary">
+							<input id="view "type="submit" value="View My Thank You Card" name="view" class="btn btn-primary"><br><br>
+							<input  id="download" type="submit" value="Download My Thank You Card" name="sub" class="btn btn-primary">
 						</div>
 						
 					</form>
@@ -134,4 +134,79 @@ if(isset($_POST['view']))
 </div>
 <div class="footer"><p style="color:white">"lakigreetings"<br> © 2022 All rights reserved | Concept redesigned by Lakshitha dilshan.</p></div>
 </body>
+
+
+<script>
+view.addEventListener('click', function()  {
+  const font = "Anklepants/anklepan.ttf";
+  const font1 = "Arial/Arial.ttf";
+  const im = new Image();
+  im.src = "card.jpg";
+  im.onload = function() {
+    const canvas = document.createElement("canvas");
+    canvas.width = im.width;
+    canvas.height = im.height;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(im, 0, 0);
+    const name = "Dear " + document.getElementById('name').value + ";";
+    const nameu = document.getElementById('name').value;
+    const output = nameu + ".jpg";
+    const date = new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" });
+    const msg = "On " + date;
+    const textColor = "rgb(128,128,128)";
+    ctx.font = "50px " + font;
+    ctx.fillStyle = textColor;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(name.toUpperCase(), canvas.width / 2, 1170);
+    ctx.font = "45px " + font1;
+    ctx.fillText(msg, canvas.width / 2, 1900);
+    canvas.toBlob(function(blob) {
+      const link = document.createElement("a");
+      link.download = output;
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }, "image/jpeg", 1);
+  };
+}),
+
+download.addEventListener('click', function()  {
+  const image = new Image();
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const font = new FontFace('Anklepants', 'url(Anklepants/anklepan.ttf)');
+  const font1 = new FontFace('Arial', 'url(Arial/Arial.ttf)');
+  const name = `Dear ${document.querySelector('input[name="name"]').value};`;
+  const nameu = document.querySelector('input[name="name"]').value;
+  const output = `${nameu}.jpg`;
+  const date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Colombo', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+  const msg = `On ${date}`;
+  const textColor = 'rgb(128, 128, 128)';
+  image.onload = () => {
+    canvas.width = image.width;
+    canvas.height = image.height;
+    ctx.drawImage(image, 0, 0);
+    ctx.font = '50px Anklepants';
+    ctx.fillStyle = textColor;
+    ctx.fillText(name.toUpperCase(), 360, 1170);
+    ctx.font = '45px Arial';
+    ctx.fillText(msg, 240, 1900);
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = output;
+      a.click();
+      URL.revokeObjectURL(url);
+    }, 'image/jpeg', 1);
+  };
+  image.src = 'card.jpg';
+  font.load().then(() => {
+    document.fonts.add(font);
+  });
+  font1.load().then(() => {
+    document.fonts.add(font1);
+  });
+})
+</script>
 </html>
